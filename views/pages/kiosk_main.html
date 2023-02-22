@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+	{% include 'head.html' %}
+	<style type="text/css">
+		#bg_body{
+			background-image: url('../static/img/industry.jpg');
+		}
+	</style>
+	<body id="bg_body" class="paralax x-padding">
+
+		<div class="x-row x-container x-padding-large">
+			<div class="x-container x-padding x-col l4 x-round-large">
+				<img class="x-zoom" src="../static/img/cover.png" style="width:100%">
+			</div>
+			<div class="x-container x-padding x-col l8 x-round-large">
+				<header class="x-container x-header" style="padding: 20px;">
+
+				<!-- 	<div class="x-container x-col l1 x-padding x-left">
+						<img src="../static/img/dti.png" class="x-img x-round-large" style="width:100%;">
+					</div> -->
+					<div class="x-container x-col l8 x-leftbar x-border-blue">
+						<span>
+							<b class="x-text x-xxlarge">
+								Department of Trade and Industry<br>Kiosk 
+								<span class="fa fa-exclamation-circle  x-text-blue"></span> 
+							</b>
+						</span>
+					</div>
+				</header>
+				<div class="x-container">
+					<div class="x-container x-padding x-col l6 x-round-large" class="x-black-transparent" style="padding-left: 80px;padding-right: 80px;">
+						<div class="x-container">
+							<b class="x-xlarge x-text">Services</b>
+						</div>
+						<div class="x-container x-padding">
+							{% for services in services_pdf: %}
+							<div class="x-container" style="padding:5px">
+								<div class="x-zoom x-white x-container x-padding x-card x-hover-blue" onclick="show_pdf('{{services}}')">
+									{{services}}
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="x-container x-padding x-col l5 x-round-large">
+						<img src="../static/img/teacher1.gif" style="width: 150%;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function show_pdf(pdf_name){
+			var pdf_dialog = $dialog({
+				title : pdf_name,
+				subtitle : "Showing the Contents of ["+pdf_name+"]",
+				content: (`
+					<iframe class="x-container" src="/pdf/`+pdf_name+`" style="border:0px;height: 70vh;width: 100%;"></iframe>
+				`)
+			})
+			pdf_dialog.dialog.style.width="90vw"
+			// pdf_dialog.dialog.style.height="90vh"
+			pdf_dialog.show()
+		}
+
+	</script>
+</html>
