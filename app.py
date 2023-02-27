@@ -10,8 +10,6 @@ app.secret_key="dti_kiosk2021_hashbrown_0_0_1"
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-
 app.register_blueprint(kiosk.app)
-
 
 app.run(host="0.0.0.0",debug=True)
